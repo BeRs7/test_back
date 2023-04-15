@@ -1,0 +1,29 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+Создание главного баннера
+{% endblock %}
+
+{% block content %}
+<div class="main-content" id="crmProductsList">
+    <div class="main-head row d-flex justify-content-between">
+        <h1 class="h1 title_margin-bottom">Создание главного баннера</h1>
+        <button type="button" class="btn btn-large js-submit-user-form">Сохранить</button>
+    </div>
+
+    <div class="content">
+        <form class="js-user-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    {% include 'crm/banners/tables/_main_banner_tab_main.html' %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

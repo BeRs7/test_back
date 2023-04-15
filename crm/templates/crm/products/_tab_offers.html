@@ -1,0 +1,34 @@
+{{ trade_offers_formset.management_form }}
+<div class="row">
+    <div class="col-9">
+        <div id="empty_product_trade_offer_form" class="d-none">
+            {% include "crm/products/_product_trade_offer_form.html" with form=trade_offers_formset.empty_form %}
+        </div>
+        <table class="table table-remains-products">
+            <thead>
+                <tr class="table-head">
+                    <th class="table-head" scope="col">
+                        <span>Размер</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                        <span>Количество</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                        <span>Активно</span>
+                    </th>
+                    <th class="table-head" scope="col" title="Удалить">
+                        <span title="Удалить">Удалить</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="trade_offers_container" data-prefix="{{ trade_offers_formset.prefix }}">
+                {% for form in trade_offers_formset %}
+                    {% include "crm/products/_product_trade_offer_form.html" with form=form %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2">
+        <div class="btn btn_big" id="add_trade_offer" style="margin-left: 15px; width: 208px; margin-right: 19px;">Добавить размер ＋</div>
+    </div>
+</div>

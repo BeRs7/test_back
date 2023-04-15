@@ -1,0 +1,56 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n parler_tags %}
+{% load i18n %}
+
+{% block title %}Редактирование записи на примерку{% endblock %}
+{% block content %}
+
+<div class="main-content">
+    <div class="main-head">
+        <h1 class="h1">Запись на примерку {{ fitting.time }}</h1>
+        <button class="btn btn_big js-submit-category-form" style="margin-left: 25px;">Сохранить изменения</button>
+    </div>
+    <div class="content" style="overflow: hidden;">
+        <form class="js-product-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+                <div class="row" style="margin-left: 25px; margin-top: 25px;">
+                    <div class="col row row-form">
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.full_name only %}
+                        </div>
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.time only %}
+                        </div>
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.phone only %}
+                        </div>
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.email only %}
+                        </div>
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.service_type only %}
+                        </div>
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.comment only %}
+                        </div>
+                        <div class="form-group col-6">
+                            {% include 'includes/admin/_field.html' with field=form.date_of_wedding only %}
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label" for="sort">Дата создания</label>
+                            <input type="text" disabled class="form-control" value="{{ object.created }}">
+                        </div>
+                        <div class="form-group col-6">
+                            <label class="col-form-label" for="sort">ID в YClients</label>
+                            <input type="text" disabled class="form-control" value="{{ object.external_id|default:" -" }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

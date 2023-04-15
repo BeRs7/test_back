@@ -1,0 +1,19 @@
+<div class="hidden d-none js-hidden" id="product_trade_offer_form">
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+</div>
+<tr class="table-item">
+    <td>
+        {% include 'includes/admin/_field.html' with field=form.size only %}
+    </td>
+    <td>
+        {% include 'includes/admin/_field.html' with field=form.amount only %}
+    </td>
+    <td>
+        {% include 'includes/admin/_field.html' with field=form.is_active only %}
+    </td>
+    <td>
+        {% include 'includes/admin/_field.html' with field=form.DELETE only %}
+    </td>
+</tr>

@@ -1,0 +1,76 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Ознакомительные страницы
+{% endblock %}
+
+{% block content %}
+    <div class="main-content" id="crmSecondbanner">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Ознакомительные страницы</h1>
+            <div class="col-12 row no-gutters">
+                <a href="{% url 'crm:text-pages:pages-create' %}" style="margin-left: auto;" class="btn btn_add">
+                    Создать страницу
+                </a>
+            </div>
+        </div>
+
+        <table class="table  table-list  table-list_pages">
+            <thead>
+            <tr>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Слаг</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Название</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Активна</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Отображается в футере</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Позиция</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for page in pages %}
+                <tr onclick="document.location = '{% url "crm:text-pages:pages-update" page.pk %}'">
+                    <td class="{% if not page.is_active %} disabled {% endif %}">
+                        <span>{{ page.slug }}</span>
+                    </td>
+                    <td class="{% if not page.is_active %} disabled {% endif %}">
+                        <span>{{ page.title }}</span>
+                    </td>
+                    <td class="{% if not page.is_active %} disabled {% endif %}">
+                        <span>{% bool_to_ru page.is_active %}</span>
+                    </td>
+                    <td class="{% if not page.is_active %} disabled {% endif %}">
+                        <span>{% bool_to_ru page.show_in_footer %}</span>
+                    </td>
+                    <td class="{% if not page.is_active %} disabled {% endif %}">
+                        <span>{{ page.ordering }}</span>
+                    </td>
+                    <td class="col-product-disabled {% if not page.is_active %} disabled {% endif %}">
+                        <a href="{% url 'crm:text-pages:pages-toggle-is-active' page.pk %}"
+                           class="btn-disabled {% if page.is_active %} active {% endif %}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="footer-list">
+            {% include '_pagination.html' with paginator=page_obj %}
+        </div>
+    </div>
+{% endblock %}

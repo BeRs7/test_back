@@ -1,0 +1,387 @@
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+}
+
+.navbar-brand__logo {
+    width: 152px;
+    height: 16px;
+}
+
+.header-form-search {
+    width: 192px;
+    margin-bottom: 0;
+}
+
+
+.modal-dialog-support {
+    max-width: 620px;
+}
+
+textarea {
+    resize: none;
+}
+
+.form-check-box {
+    margin-top: 35px;
+}
+
+.form-check-box .form-check {
+    margin-bottom: 1rem;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+/*.select2-container--default .select2-selection--multiple {*/
+/*    display: block !important;*/
+/*    width: 100%;*/
+/*    height: 40px;*/
+/*    padding: 0.48rem 2.5rem 0.48rem 0.75rem;*/
+/*    font-size: 0.875rem;*/
+/*    font-weight: 400;*/
+/*    line-height: 1.6;*/
+/*    letter-spacing: 0.01em;*/
+/*    color: #252C44;*/
+/*    background-color: #fff !important;*/
+/*    background-clip: padding-box;*/
+/*    border: 1px solid #e0e3eb !important;*/
+/*    -webkit-appearance: none;*/
+/*    -moz-appearance: none;*/
+/*    appearance: none;*/
+/*    border-radius: 0.5rem !important;*/
+/*    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;*/
+/*}*/
+/*.select2-container--default .select2-results__option--highlighted[aria-selected]{*/
+/*    color: #6A7797 !important;*/
+/*}*/
+/*.select2-container--default .select2-selection--multiple::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 17px;*/
+/*    right: 17px;*/
+/*    width: 10px;*/
+/*    height: 7px;*/
+/*    background: url("../img/select-arrow.svg") center/100% auto no-repeat;*/
+/*    transition: background 0.2s ease-in-out;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple[aria-expanded="true"]::after {*/
+/*    background-image: url("../img/select-arrow_active.svg");*/
+/*}*/
+
+/*.select2-results__option {*/
+/*    padding: 0.5rem 1rem !important;*/
+/*    font-size: 14px;*/
+/*    line-height: 16px;*/
+/*    letter-spacing: 0.01em;*/
+/*    color: #6A7797;*/
+/*}*/
+
+/*.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {*/
+/*    color: #6A7797;*/
+/*}*/
+
+/*.select2-results__option:not(:last-child) {*/
+/*    border-bottom: 1px solid rgba(158, 168, 194, 0.16);*/
+/*}*/
+
+/*.select2-container--default.select2-container--focus .select2-selection--multiple {*/
+/*    color: #252C44;*/
+/*    background-color: #fff;*/
+/*    border-color: #697CFF;*/
+/*    outline: 0;*/
+/*}*/
+
+/*.select2-container--default.select2-container--open.select2-container--above .select2-selection--single,*/
+/*.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple,*/
+/*.select2-container--open .select2-dropdown--below {*/
+/*    border-top-left-radius: 0.5rem !important;*/
+/*    border-top-right-radius: 0.5rem !important;*/
+/*}*/
+
+/*.select2-container--default.select2-container--open.select2-container--below .select2-selection--single, */
+/*.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {*/
+/*    border-bottom-left-radius: 0.5rem !important;*/
+/*    border-bottom-right-radius: 0.5rem !important;*/
+/*}*/
+
+/*.select2-container--open .select2-dropdown--below,*/
+/*.select2-container--open .select2-dropdown--above {*/
+/*    border: none;*/
+/*    border-radius: 0.5rem;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*.select2-container--open .select2-dropdown--below {*/
+/*    margin-top: 16px;*/
+/*    box-shadow: 0px 8px 24px rgba(43, 59, 115, 0.12);*/
+/*}*/
+
+/*.select2-container--open .select2-dropdown--above {*/
+/*    margin-top: -4px;*/
+/*    box-shadow: 0px -8px 24px rgba(43, 59, 115, 0.12);*/
+/*}*/
+
+/*.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable,*/
+/*.select2-container--default .select2-results__option--selected,*/
+/*.select2-container--default .select2-results__option--highlighted[aria-selected] {*/
+/*    background: transparent !important;*/
+/*    background-color: transparent !important;*/
+/*}*/
+
+/*.select2-container .select2-search--inline .select2-search__field {*/
+/*    margin: 0 !important;*/
+/*    height: 23px;*/
+/*}*/
+
+/*.select2-container .select2-search--inline .select2-search__field::placeholder {*/
+/*    position: relative;*/
+/*    top: 3px;*/
+/*    font-weight: 400;*/
+/*    font-size: 14px;*/
+/*    line-height: 16px;*/
+/*    letter-spacing: 0.01em;*/
+/*    color: #9EA8C2;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__choice {*/
+/*    padding: 4px 24px 4px 4px;*/
+/*    margin: 0 4px 0 0;*/
+/*    background: #EEF3FB;*/
+/*    border: none;*/
+/*    border-radius: 4px;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__choice .option-item {*/
+/*    padding: 0;*/
+/*}*/
+
+/*.select2-selection__choice .product-check {*/
+/*    display: none;*/
+/*}*/
+
+/*.select2-selection__choice .card-img {*/
+/*    width: 40px;*/
+/*    min-width: 40px;*/
+/*    height: 40px;*/
+/*}*/
+
+/*.select2-selection__choice .card-img img {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    object-fit: cover;*/
+/*    object-position: center;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__choice__display {*/
+/*    padding: 0;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__rendered {*/
+/*    padding: 0 !important;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {*/
+/*    left: auto;*/
+/*    right: 6.5px;*/
+/*    top: 9.5px;*/
+/*    width: 0.45em;*/
+/*    height: 0.45em;*/
+/*    padding: 0.2em;*/
+/*    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7984 2.20194C12.8624 2.26579 12.9132 2.34164 12.9479 2.42515C12.9825 2.50866 13.0003 2.59819 13.0003 2.6886C13.0003 2.77901 12.9825 2.86854 12.9479 2.95204C12.9132 3.03555 12.8624 3.1114 12.7984 3.17526L3.17525 12.7984C3.04618 12.9275 2.87112 13 2.68859 13C2.50606 13 2.331 12.9275 2.20193 12.7984C2.07286 12.6694 2.00035 12.4943 2.00035 12.3118C2.00035 12.1292 2.07286 11.9542 2.20193 11.8251L11.8251 2.20194C11.8889 2.13793 11.9648 2.08714 12.0483 2.05249C12.1318 2.01784 12.2213 2 12.3118 2C12.4022 2 12.4917 2.01784 12.5752 2.05249C12.6587 2.08714 12.7346 2.13793 12.7984 2.20194Z' fill='%239EA8C2'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M2.20194 2.20194C2.13793 2.26579 2.08714 2.34164 2.05249 2.42515C2.01784 2.50866 2 2.59819 2 2.6886C2 2.77901 2.01784 2.86854 2.05249 2.95204C2.08714 3.03555 2.13793 3.1114 2.20194 3.17526L11.8251 12.7984C11.9542 12.9275 12.1292 13 12.3118 13C12.4943 13 12.6693 12.9275 12.7984 12.7984C12.9275 12.6694 13 12.4943 13 12.3118C13 12.1292 12.9275 11.9542 12.7984 11.8251L3.17525 2.20194C3.1114 2.13793 3.03555 2.08714 2.95204 2.05249C2.86854 2.01784 2.77901 2 2.6886 2C2.59818 2 2.50866 2.01784 2.42515 2.05249C2.34164 2.08714 2.26579 2.13793 2.20194 2.20194Z' fill='%239EA8C2'/%3e%3c/svg%3e");   */
+/*    border: 0;*/
+/*    box-sizing: content-box;*/
+/*    transition: all 0.2s ease-in-out;*/
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {*/
+/*    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7984 2.20194C12.8624 2.26579 12.9132 2.34164 12.9479 2.42515C12.9825 2.50866 13.0003 2.59819 13.0003 2.6886C13.0003 2.77901 12.9825 2.86854 12.9479 2.95204C12.9132 3.03555 12.8624 3.1114 12.7984 3.17526L3.17525 12.7984C3.04618 12.9275 2.87112 13 2.68859 13C2.50606 13 2.331 12.9275 2.20193 12.7984C2.07286 12.6694 2.00035 12.4943 2.00035 12.3118C2.00035 12.1292 2.07286 11.9542 2.20193 11.8251L11.8251 2.20194C11.8889 2.13793 11.9648 2.08714 12.0483 2.05249C12.1318 2.01784 12.2213 2 12.3118 2C12.4022 2 12.4917 2.01784 12.5752 2.05249C12.6587 2.08714 12.7346 2.13793 12.7984 2.20194Z' fill='%236A7797'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M2.20194 2.20194C2.13793 2.26579 2.08714 2.34164 2.05249 2.42515C2.01784 2.50866 2 2.59819 2 2.6886C2 2.77901 2.01784 2.86854 2.05249 2.95204C2.08714 3.03555 2.13793 3.1114 2.20194 3.17526L11.8251 12.7984C11.9542 12.9275 12.1292 13 12.3118 13C12.4943 13 12.6693 12.9275 12.7984 12.7984C12.9275 12.6694 13 12.4943 13 12.3118C13 12.1292 12.9275 11.9542 12.7984 11.8251L3.17525 2.20194C3.1114 2.13793 3.03555 2.08714 2.95204 2.05249C2.86854 2.01784 2.77901 2 2.6886 2C2.59818 2 2.50866 2.01784 2.42515 2.05249C2.34164 2.08714 2.26579 2.13793 2.20194 2.20194Z' fill='%236A7797'/%3e%3c/svg%3e");   */
+/*}*/
+
+/*.select2-container--default .select2-selection--multiple .select2-selection__choice__remove span {*/
+/*    display: none;*/
+/*}*/
+
+/*.option-item {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    padding: 0.5rem 0;*/
+/*}*/
+
+/*.col-connections:not(:last-child) {*/
+/*    margin-bottom: 16px;*/
+/*}*/
+
+/*.col-connections .select2-container .select2-selection--multiple .select2-selection__rendered {*/
+/*    position: absolute;*/
+/*    top: 56px;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.col-connections .select2-container--default .select2-selection--multiple .select2-selection__choice {*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*    padding: 8px 50px 8px 8px;*/
+/*    margin: 0 0 8px;*/
+
+/*    background-color: #EEF3FB;*/
+/*    border-radius: 8px;*/
+/*    border: none;*/
+/*    white-space: inherit;*/
+/*}*/
+
+/*.col-connections .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {*/
+/*    right: 15px;*/
+/*    top: 20px;*/
+/*    width: 0.6em;*/
+/*    height: 0.6em;*/
+/*    padding: 0.25em 0.25em;*/
+/*}*/
+.required {
+    color: red;
+}
+.table-remains-products {
+    grid-template-columns: minmax(80px, 3fr) minmax(50px, 4fr) minmax(50px, 2fr) minmax(50px, 1fr);
+}
+/* .gallery__card{
+    width: 180px;
+} */
+.card-video{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+/*.select2-container--default .select2-selection--multiple .select2-selection__clear{*/
+/*    display: none;*/
+/*}*/
+/*.select2-container--open .select2-dropdown--below{*/
+/*    margin-top: 4px;*/
+/*}*/
+/*.select2-container .select2-search--inline {*/
+/*    float: none!important;*/
+/*}*/
+.lookbook-row{
+    margin-bottom: 2rem;
+}
+
+.lookbook-item{
+    cursor: pointer;
+    min-height: 350px;
+    height: 100%;
+    background: #EEF3FB;
+    border: 1px dashed #9EA8C2;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.lookbook-video{
+
+}
+.blank-field span{
+    text-decoration: underline;
+}
+.blank-field img{
+    width: 100%;
+}
+.img-100 img{
+    width: 100%;
+}
+.remove-block{cursor: pointer}
+
+.add-block-wrapper {
+    width: 100%;
+    font-size: 18px;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    text-align: center;
+    cursor: pointer;
+}
+.modal-block-selector{
+    background: #bec8e3;
+    padding: 5px 3px;
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cursor-grab{
+    cursor: grab;
+}
+.jsfield-is_published {
+    margin-top: 0.75rem;
+    margin-left: 0.3rem;
+}
+textarea {
+    overflow-y: scroll;
+    height: 250px !important;
+    resize: none; /* Remove this if you want the user to resize the textarea */
+}
+.gallery__card.js-gallery__card.sortable_clone {
+    width: 180px;
+}
+.js-delete-card {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+}
+
+.mr-3{
+    margin-right: 20px;
+}
+.js-remove-wrapper{
+    cursor: pointer;
+}
+.js-topside img{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.js-bottomside img{
+    cursor: pointer;
+    width: 20px;
+      -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+    height: 20px;
+}
+.actions{
+    display: flex;
+}
+.actions > div {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.lookbook-item > .img-placeholder > img {
+    max-width: 100%;
+}
+
+li.select2-selection__choice{
+    padding-left: 25px;
+}

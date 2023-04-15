@@ -1,0 +1,101 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+Пользователи
+{% endblock %}
+
+{% block content %}
+<div class="main-content" id="crmUsersList" data-delete-users-url="{{ delete_users_url }}"
+     data-copy-users-url="{{ copy_users_url }}">
+    <div class="main-head row">
+        <h1 class="h1 title_margin-bottom col-12">Пользователи</h1>
+        <div class="col-12 row no-gutters">
+            <form class="flex-grow-1 form-group form-search col">
+                {{ filter.form.search }}
+                <button class="btn-search" type="submit" aria-label="Поиск">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+
+            <div class="dropdown dropdown-add col-auto">
+                <a class="btn btn_add dropdown-toggle"
+                   href="{% url 'crm:users:create' %}"
+                >
+                    Создать пользователя
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <table class="table  table-list  table-list_users">
+        <thead>
+        <tr>
+            <th class="table-head" scope="col">
+                <div class="form-check">
+                    <input class="form-check-input product-check-all" type="checkbox" value="" id="check">
+                </div>
+            </th>
+            <th class="table-head head-no-all-check" scope="col">
+                <span>Логин</span>
+            </th>
+            <th class="table-head head-no-all-check" scope="col">
+                <span>Имя</span>
+            </th>
+            <th class="table-head head-no-all-check" scope="col">
+                <span>Телефон</span>
+            </th>
+
+            <th class="table-head head-all-check colspan-first" scope="col">
+                <div>Выбрано <span class="count-check">969</span> из <span class="count-all">969</span></div>
+            </th>
+            <th class="table-head head-all-check colspan-last" scope="col">
+                <div class="nav-item-pills dropdown table-dropdown">
+                    <button class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-expanded="false" data-bs-display="static">
+                        Действие
+                        <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <btn class="dropdown-item" style="cursor: pointer" id="deleteUsers">Удалить</btn>
+                        </li>
+                    </ul>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+        <tr onclick="location.href='{% url 'crm:users:detail' user.id %}'">
+            <th scope="row">
+                <div class="form-check">
+                    <input class="form-check-input product-check" type="checkbox" value="{{ user.id }}"
+                           id="defaultCheck1">
+                </div>
+            </th>
+            <td>
+                <span>{{ user.email }}</span>
+
+            </td>
+            <td>
+                <span>{{ user.first_name }} {{ user.last_name }}</span>
+            </td>
+            <td>
+                <a href=''>{{ user.phone|default:"-" }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="footer-list">
+        {% include '_pagination.html' with paginator=page_obj %}
+    </div>
+</div>
+{% endblock %}

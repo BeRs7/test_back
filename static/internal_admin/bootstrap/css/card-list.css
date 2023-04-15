@@ -1,0 +1,36 @@
+.card-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.card-item__product {
+  display: flex;
+  align-items: center;
+}
+
+.card-item__description {
+  margin: 0 0 0 1rem;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  color: #252C44;
+}
+
+.card-list_down .card-item {
+  background: #EEF3FB;
+  border-radius: 0.5rem;
+}
+.card-list_down .card-item:not(:last-child) {
+  margin-bottom: 0.5rem;
+  border-bottom: none;
+}
+.card-list_down .card-img {
+  border-radius: 0.25rem;
+}
+
+.product-check {
+  margin-top: 0;
+}
+
+/*# sourceMappingURL=card-list.css.map */

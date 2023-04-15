@@ -1,0 +1,21 @@
+<div class="gallery__card js-gallery__card">
+    <div class="js-delete-card">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0.894199" y1="11.0427" x2="11.0439" y2="0.904124" stroke="#828282"></line>
+            <line x1="11.0222" y1="11.086" x2="0.887855" y2="0.951651" stroke="#828282"></line>
+        </svg>
+    </div>
+    <div class="hidden d-none js-hidden">
+        {{ form.DELETE }}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {{ form.temp_file }}
+        {{ form.order }}
+    </div>
+            {% if 'png' in form.instance.file.url or 'jpeg' in form.instance.file.url or 'jpg' in form.instance.file.url%}
+        <img src="{% if form.instance.file %}{{ form.instance.file.url }}{% else %}__img_placeholder__{% endif %}" alt="">
+    {% else %}
+            <video src="{% if form.instance.file %}{{ form.instance.file.url }}{% else %}__img_placeholder__{% endif %}" alt=""></video>
+{% endif %}
+</div>

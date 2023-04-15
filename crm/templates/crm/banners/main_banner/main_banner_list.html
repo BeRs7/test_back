@@ -1,0 +1,109 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Главные баннеры
+{% endblock %}
+
+{% block content %}
+    <div class="main-content" id="crmSecondbanner" data-delete-banners="{{ main_banner_delete_url }}">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Главные баннеры</h1>
+            <div class="col-12 row no-gutters">
+                <form class="flex-grow-1 form-group form-search col">
+                    {{ filter.form.search }}
+                    <button class="btn-search" type="submit" aria-label="Поиск">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+
+                <div class="dropdown dropdown-add col-auto">
+                    <a href="{% url 'crm:banners:main_banner_create' %}" class="btn btn_add">
+                        Создать баннер
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <table class="table  table-list  table-list_banner">
+            <thead>
+            <tr>
+                <th class="table-head" scope="col">
+                    <div class="form-check">
+                        <input class="form-check-input product-check-all" type="checkbox" value="" id="check">
+                    </div>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Превью</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Id</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Название</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Позиция</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col"></th>
+                <th class="table-head head-all-check colspan-first" scope="col">
+                    <div>Выбрано <span class="count-check">969</span> из <span class="count-all">969</span></div>
+                </th>
+                <th class="table-head head-all-check colspan-last" scope="col">
+                    <div class="nav-item-pills dropdown table-dropdown">
+                        <button class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false" data-bs-display="static">
+                            Действие
+                            <i class="bi bi-caret-down-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <btn class="dropdown-item" style="cursor: pointer" id="deleteBanners">Удалить</btn>
+                            </li>
+                        </ul>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for banner in banners %}
+                <tr onclick="document.location = '{% url 'crm:banners:main_banner_update' banner.id %}'" style="margin-left=">
+                    <td style="margin-left: 9px;">
+                        <div class="form-check">
+                            <input class="form-check-input product-check" type="checkbox" value="{{ banner.id }}" id="defaultCheck1">
+                        </div>
+                    </td>
+                    <td class="{% if not banner.is_active %} disabled {% endif %}">
+                        <div class="card-img">
+                            <img src="{{ banner.get_cropped_image_crm }}" alt="" onerror="this.style.visibility = 'hidden'">
+                        </div>
+                    </td>
+                    <td class="{% if not banner.is_active %} disabled {% endif %}">
+                        <span>{{ banner.id }}</span>
+                    </td>
+                    <td class="{% if not banner.is_active %} disabled {% endif %}">
+                        <span>{{ banner.title }}</span>
+                    </td>
+                    <td class="{% if not banner.is_active %} disabled {% endif %}">
+                        <span>{{ banner.order }}</span>
+                    </td>
+                    <td class="col-product-disabled">
+                        <a href="{% url 'crm:banners:main-banner-change-status' banner.id %}"
+                           class="btn-disabled {% if banner.is_active %} active {% endif %}">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="footer-list">
+            {% include '_pagination.html' with paginator=page_obj %}
+        </div>
+    </div>
+{% endblock %}

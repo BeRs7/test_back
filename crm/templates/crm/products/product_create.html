@@ -1,0 +1,81 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n parler_tags %}
+{% load i18n %}
+
+{% block title %}Редактирование товара{% endblock %}
+{% block content %}
+
+<div class="main-content">
+    <div class="main-head">
+        <h1 class="h1">Добавление продукта</h1>
+        <button class="btn btn_big" id="js-submit-product-form" style="margin-left: 25px;">Сохранить продукт</button>
+    </div>
+
+    <div class="content">
+
+        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item-pills dropdown-box" role="presentation">
+                <a class="nav-link active  nav-basic-tab" id="basic-tab" data-bs-toggle="pill" href="#basic" role="tab"
+                   aria-controls="basic" aria-selected="true">
+                    Основное
+                </a>
+            </li>
+            <li class="nav-item-pills" role="presentation">
+                <a class="nav-link" id="properties-tab" data-bs-toggle="pill" href="#properties" role="tab"
+                   aria-controls="properties" aria-selected="false">
+                    Свойства
+                </a>
+            </li>
+            <li class="nav-item-pills" role="presentation">
+                <a class="nav-link" id="gallery-tab" data-bs-toggle="pill" href="#gallery" role="tab"
+                   aria-controls="gallery" aria-selected="false">
+                    Галерея
+                </a>
+            </li>
+            <li class="nav-item-pills" role="presentation">
+                <a class="nav-link" id="remains-tab" data-bs-toggle="pill" href="#remains" role="tab"
+                   aria-controls="remains" aria-selected="false">
+                    Торговые предложения
+                </a>
+            </li>
+            <li class="nav-item-pills" role="presentation">
+                <a class="nav-link" id="connections-tab" data-bs-toggle="pill" href="#connections" role="tab"
+                   aria-controls="connections" aria-selected="false">
+                    Связи
+                </a>
+            </li>
+{#            <li class="nav-item-pills" role="presentation">#}
+{#                <a class="nav-link" id="seo-tab" data-bs-toggle="pill" href="#seo" role="tab"#}
+{#                   aria-controls="seo" aria-selected="false">#}
+{#                    SEO#}
+{#                </a>#}
+{#            </li>#}
+        </ul>
+        <form class="js-product-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    {% include 'crm/products/_tab_basic.html' %}
+                </div>
+                <div class="tab-pane fade" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+                    {% include 'crm/products/_tab_properties.html' %}
+                </div>
+                <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+                    {% include 'crm/products/_tab_gallery.html' %}
+                </div>
+                <div class="tab-pane fade" id="remains" role="tabpanel" aria-labelledby="remains-tab">
+                    {% include 'crm/products/_tab_offers.html' %}
+                </div>
+                <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
+                    {% include 'crm/products/_tab_connections.html' %}
+                </div>
+{#                <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">#}
+{#                    {% include 'crm/products/_tab_seo.html' %}#}
+{#                </div>#}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

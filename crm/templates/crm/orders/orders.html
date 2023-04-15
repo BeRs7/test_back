@@ -1,0 +1,182 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Заказы
+{% endblock %}
+
+{% block content %}
+    <div class="main-content" id="crmOrdersList"
+         data-delete-orders-url="{{ delete_orders_url }}"
+         data-copy-orders-url="{{ copy_orders_url }}">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Заказы</h1>
+            <div class="col-12 row no-gutters">
+
+                <div class="flex-grow-1 col  search-filters-group">
+                    <form class="form-group filter-search-form {% if has_filter_date or has_filter_status %}filt{% endif %}" method="GET">
+                        <input type="text" name="search" value="{{ request.GET.search }}" class="form-control  input-search-filters"
+                               placeholder="Поиск + фильтрация" id="id_search" autocomplete="off">
+                        <div class="search-filters_count-box">
+                            <i class="bi bi-filter"></i>
+                            <span class="search-filters_count" data-count="1">1</span>
+                        </div>
+                        <button class="btn-search" type="submit" aria-label="Поиск">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <button class="btn-search-reset" type="reset" aria-label="Сбросить фильтры, очистить поле">
+                            <i class="bi bi-x"></i>
+                        </button>
+
+                        <div class="dropdown  dropdown-search-filters">
+                            <div class="dropdown-menu  modal-search-filters" aria-labelledby="id_search-btn">
+                                <ul class="filters-list">
+                                    <li class="filters-item">
+                                        <div class="form-check  filter-title {% if has_filter_date %}next-form{% endif %}">
+                                            <input class="form-check-input" type="checkbox" value="" id="f-data_orders" {% if has_filter_date %}checked{% endif %}>
+                                            <label class="form-check-label" for="f-data_orders">Даты заказов</label>
+                                        </div>
+                                        <div class="filters-sub-box">
+                                            <div class="sub-box-row  d-flex align-items-center">
+                                                <div class="form-group">
+                                                    {{ filter.form.date_start }}
+                                                </div>
+                                                <span></span>
+                                                <div class="form-group">
+                                                    {{ filter.form.date_end }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="filters-item">
+                                        <div class="form-check  filter-title">
+                                            <input class="form-check-input" type="checkbox" value="" id="f-status" {% if has_filter_status %}checked{% endif %}>
+                                            <label class="form-check-label" for="f-status">Статус</label>
+                                        </div>
+                                        <div class="filters-sub-box">
+                                            <ul class="filters-sublist">
+                                                <li class="filters-subitem">
+                                                    <div class="form-check">
+                                                        {{ filter.form.new }}
+                                                        <label class="form-check-label" for="id_new">Новый</label>
+                                                    </div>
+                                                </li>
+                                                <li class="filters-subitem">
+                                                    <div class="form-check">
+                                                        {{ filter.form.payed }}
+                                                        <label class="form-check-label" for="id_payed">Предоплата
+                                                            поступила</label>
+                                                    </div>
+                                                </li>
+                                                <li class="filters-subitem">
+                                                    <div class="form-check">
+                                                        {{ filter.form.canceled }}
+                                                        <label class="form-check-label" for="id_canceled">Отменён</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="filters-reset-row">
+                                    <a class="filters-reset" type="reset" href="{% url 'crm:orders:list' %}">
+                                        Сбросить фильтры
+                                        <i class="bi bi-x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <table class="table  table-list  table-list_orders">
+            <thead>
+            <tr>
+                <th class="table-head" scope="col">
+                    <div class="form-check">
+                        <input class="form-check-input product-check-all" type="checkbox" value="" id="check">
+                    </div>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Id</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Статус</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Стоимость</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Вес</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Дата создания</span>
+                </th>
+
+                <th class="table-head head-all-check colspan-first" scope="col">
+                    <div>Выбрано <span class="count-check">969</span> из <span class="count-all">969</span></div>
+                </th>
+                <th class="table-head head-all-check colspan-last" scope="col">
+                    <div class="nav-item-pills dropdown table-dropdown">
+                        <button class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false" data-bs-display="static">
+                            Действие
+                            <i class="bi bi-caret-down-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+{#                            <li>#}
+{#                                <btn class="dropdown-item dropdown-item_border-bottom" style="cursor: pointer"#}
+{#                                     id="copyOrders">Копировать#}
+{#                                </btn>#}
+{#                            </li>#}
+                            <li>
+                                <btn class="dropdown-item" style="cursor: pointer" id="deleteOrders">Удалить</btn>
+                            </li>
+{#                            <li>#}
+{#                                <btn class="dropdown-item" style="cursor: pointer" id="sendToRetailOrders">Отправить в RetailCRM</btn>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr onclick="location.href='{% url 'crm:orders:detail' order.id %}'">
+                    <th scope="row">
+                        <div class="form-check">
+                            <input class="form-check-input product-check" type="checkbox" value="{{ order.id }}"
+                                   id="defaultCheck1">
+                        </div>
+                    </th>
+                    <td>
+                        <span>{{ order.id }}</span>
+                    </td>
+                    <td>
+                        <span>{{ order.get_status_display }}</span>
+                    </td>
+                    <td>
+                        <span>{{ order.summary_cost }} ₽</span>
+                    </td>
+                    <td>
+                        <span>{{ order.get_total_weight }} кг</span>
+                    </td>
+                    <td>
+                        <span>{{ order.created_at|date:"j.m.Y" }}</span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer-list">
+            {% include '_pagination.html' with paginator=page_obj %}
+        </div>
+    </div>
+{% endblock %}

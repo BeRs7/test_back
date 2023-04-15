@@ -1,0 +1,66 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Справочник размеров товаров
+{% endblock %}
+
+{% block content %}
+    <div class="main-content" id="crmSecondbanner">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Справочник размеров товаров</h1>
+            <div class="col-12 row no-gutters">
+                <a href="{% url 'crm:sizes:create' %}" style="margin-left: auto;" class="btn btn_add">
+                    Создать размер
+                </a>
+            </div>
+        </div>
+
+        <table class="table  table-list  table-list_pages">
+            <thead>
+            <tr>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Название</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Отображается в фильтрах</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span></span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for size in sizes %}
+                <tr onclick="document.location = '{% url "crm:sizes:update" size.pk %}'">
+                    <td style="margin-left: 10px;">
+                        <span>{{ size.size }}</span>
+                    </td>
+                    <td class="{% if not size.display_on_main %} disabled {% endif %}">
+                        <span>{% bool_to_ru size.display_on_main %}</span>
+                    </td>
+                    <td class="col-product-disabled {% if not size.display_on_main %} disabled {% endif %}">
+                        <a href="{% url 'crm:sizes:toggle-is-active' size.pk %}"
+                           class="btn-disabled {% if size.display_on_main %} active {% endif %}"></a>
+                    </td>
+                    <td>
+                        <a href="{% url 'crm:sizes:delete' size.pk %}">
+                            <i class="bi bi-trash-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="footer-list">
+            {% include '_pagination.html' with paginator=page_obj %}
+        </div>
+    </div>
+{% endblock %}

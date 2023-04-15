@@ -1,0 +1,23 @@
+
+<div class="row">
+    <div class="col col-form col-6">
+        {% include 'includes/admin/_field.html' with field=form.desktop_image only %}
+    </div>
+    <div class="col col-form col-6">
+        {% include 'includes/admin/_field.html' with field=form.mobile_image only %}
+    </div>
+</div>
+<div class="row">
+    <div class="col col-form col-12">
+        {% include 'includes/admin/_field.html' with field=form.link only %}
+    </div>
+    <div class="col col-form col-12" style="margin-top: 40px">
+        {% include 'includes/admin/_field.html' with field=form.is_active only %}
+    </div>
+</div>
+<div class="row">
+    <div class="col col-form col-6">
+        {% include 'includes/admin/_field.html' with field=form.title_ru only %}
+        {% include 'includes/admin/_field.html' with field=form.subtitle_ru only %}
+    </div>
+</div>

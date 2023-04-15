@@ -1,0 +1,43 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+Создание страницы
+{% endblock %}
+
+{% block content %}
+<div class="main-content" id="crmProductsList">
+    <div class="main-head row d-flex justify-content-between">
+        <h1 class="h1 title_margin-bottom">Создание страницы</h1>
+        <button type="button" class="btn btn-large js-submit-user-form">Сохранить</button>
+    </div>
+
+    <div class="content">
+        <form class="js-user-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    <div class="row">
+                        <div class="row">
+                            {% include 'includes/admin/_field.html' with field=form.order only %}
+                        </div>
+
+                        <div class="row" style="margin-top: 40px">
+                            {% include 'includes/admin/_field.html' with field=form.is_active only %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-form col-6">
+                            {% include 'includes/admin/_field.html' with field=form.question_ru only %}
+                            {% include 'includes/admin/_field.html' with field=form.answer_ru only %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

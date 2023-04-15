@@ -1,0 +1,68 @@
+version: '3.8'
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres:
+  redis:
+
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data:cached
+    environment:
+      - POSTGRES_DB=saturina
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - backend
+  redis:
+    image: redis:6.0.6-alpine
+    restart: always
+    volumes:
+      - redis:/data
+    command: redis-server
+    ports:
+      - 6379
+    networks:
+      - backend
+  web:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: bash -c "./manage.py migrate --noinput && ./manage.py collectstatic --noinput && ./manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env
+    networks:
+      - backend
+  celery:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: bash -c "celery --app=config worker -l info"
+    depends_on:
+      - web
+      - postgres
+      - redis
+    networks:
+      - backend
+  celery-beat:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: bash -c "celery --app=config beat -l info "
+    depends_on:
+      - web
+      - postgres
+      - redis
+    networks:
+      - backend

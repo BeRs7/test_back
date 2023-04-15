@@ -1,0 +1,38 @@
+{% extends 'base_admin.html' %}
+
+{% block title %}Главная страница {% endblock %}
+
+{% block content %}
+    <div class="main-content">
+                <div class="main-head">
+                    <h1 class="h1">Здравствуйте, <span class="user-name">{{ request.user.get_full_name }}!</span></h1>
+                </div>
+
+                <div class="info-content">
+                    <p class="info-title">Информация за 30 дней:</p>
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <div class="info-card__head">
+                                <h5 class="info-title">Заказы </h5>
+                                <span class="badge {% if orders_percent >= 0 %}  badge-secondary {% else %} badge-danger {% endif %}">{{ orders_percent }}%</span>
+                            </div>
+                            <h4 class="info-card__number">{{ orders_count }}</h4>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card__head">
+                                <h5 class="info-title">Продано товаров </h5>
+                                <span class="badge {% if products_percent >= 0 %} badge-secondary {% else %} badge-danger {% endif %}">{{ products_percent }}%</span>
+                            </div>
+                            <h4 class="info-card__number">{{ products_quantity }}</h4>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-card__head">
+                                <h5 class="info-title">Средний чек </h5>
+                                <span class="badge {% if avg_receipt_percent >= 0 %} badge-secondary {% else %} badge-danger {% endif %}">{{ avg_receipt_percent }}%</span>
+                            </div>
+                            <h4 class="info-card__number">{{ avg_receipt }} ₽</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

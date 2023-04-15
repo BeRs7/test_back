@@ -1,0 +1,32 @@
+{% load static %}
+<div class="gallery">
+    {{ gallery_formset.management_form }}
+    <H1>Галерея</H1><br>
+    <div class="gallery__content">
+                    <div style="font-size: 12px; color: grey">*Изображения удалять правой кнопкой мыши, левой переносить</div>
+        <div class="empty_form js-gallery-empty_form d-none">
+            {% include 'crm/products/_tab_gallery_value.html' with form=gallery_formset.empty_form only %}
+        </div>
+        <div class="gallery__img js-draggable-gallery" data-prefix="{{ gallery_formset.prefix }}">
+            {% for gallery_form in gallery_formset %}
+                {% include 'crm/products/_tab_gallery_value.html' with form=gallery_form only %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="gallery__content">
+        <div class="gallery__head row align-items-center">
+            <div class="file-box col-auto">
+                <label class="btn btn_add btn_file" for="file-img">Добавить изображение или видео</label>
+                <input type="file" id="file-img" multiple>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <H1>Видео для продукта</H1>
+        <div class="gallery__video">
+            <div class="col col-form col-6">
+                {% include 'includes/admin/_field.html' with field=form.video only %}
+            </div>
+        </div>
+    </div>
+</div>

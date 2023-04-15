@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-6 row row-form">
+        <div class="col-md-12">
+            {% include 'includes/admin/_field.html' with field=form.slug only %}
+            {% include 'includes/admin/_field.html' with field=form.parent only %}
+            {% include 'includes/admin/_field.html' with field=form.order only %}
+        </div>
+        {% if not category.cover %}
+            <div class="col-md-12">
+                <label class="btn btn_add btn_file" for="id_cover">Добавить изображение</label>
+                <input type="file" hidden name="cover" class="form-control jsfield-cover" id="id_cover">
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6 row row-form">
+        <div class="form-check-box">
+            <div class="form-check">
+                {{ form.is_active }}
+                <label class="form-check-label" for="id_is_active">
+                    Активная
+                </label>
+            </div>
+            <div class="form-check">
+                {{ form.on_main }}
+                <label class="form-check-label" for="id_is_active">
+                    Выводить на главной
+                </label>
+            </div>
+            <div class="form-check">
+                {{ form.display_in_menu }}
+                <label class="form-check-label" for="id_is_active">
+                    Выводить в меню
+                </label>
+            </div>
+            <div class="form-check">
+                {{ form.on_transactions }}
+                <label class="form-check-label" for="id_is_active">
+                    Выводить на транзакционных страницах
+                </label>
+            </div>
+            {% if category.cover %}
+                {% include 'includes/admin/_field.html' with field=form.cover only %}
+                <div class="gallery__card js-gallery__card col-md-12">
+                    <img src="{{ category.cover.url }}" alt="">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

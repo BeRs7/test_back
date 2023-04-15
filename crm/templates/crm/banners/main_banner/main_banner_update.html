@@ -1,0 +1,41 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n parler_tags %}
+{% load i18n %}
+
+{% block title %}Редактирование главного баннера{% endblock %}
+{% block content %}
+    <div class="main-content">
+        <div class="main-head justify-content-end">
+            <button class="btn btn_big js-submit-user-form">Сохранить изменения</button>
+        </div>
+        <div class="content">
+            <form class="js-user-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                        {% include 'crm/banners/tables/_main_banner_tab_main.html' %}
+                    </div>
+                </div>
+            </form>
+        </div>
+{#        <div class="main-content">#}
+{#            <div class="main-head justify-content-end">#}
+{#                <button class="btn btn_big js-submit-user-form">Сохранить изменения</button>#}
+{#            </div>#}
+{#            <form class="js-user-form" method="post" enctype="multipart/form-data">#}
+{#                {% csrf_token %}#}
+{#                <div class="content">#}
+{#                    <div class="tab-content" id="properties" role="tabpanel" aria-labelledby="properties-tab">#}
+{#                        <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">#}
+{#                            {% include 'crm/banners/tables/_main_banner_tab_main.html' %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                {{ form.errors }}#}
+{#            </form>#}
+{#        </div>#}
+    </div>
+
+{% endblock %}

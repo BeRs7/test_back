@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col row row-form">
+        <div class="col-12">
+            {% include 'includes/admin/_field.html' with field=form.slug only %}
+        </div>
+        <div class="col-12">
+            {% include 'includes/admin/_field.html' with field=form.sku only %}
+        </div>
+        <div class="col-6">
+            {% include 'includes/admin/_field.html' with field=form.category only %}
+        </div>
+        <div class="col-6">
+            {% include 'includes/admin/_field.html' with field=form.major_category only %}
+        </div>
+        <div class="col-6">
+            {% include 'includes/admin/_field.html' with field=form.price only %}
+        </div>
+        <div class="col-6">
+            {% include 'includes/admin/_field.html' with field=form.price_with_sale only %}
+        </div>
+        <div class="col-6">
+            {% include 'includes/admin/_field.html' with field=form.order only %}
+        </div>
+        <div class="col-6">
+            {% include 'includes/admin/_field.html' with field=form.color only %}
+        </div>
+    </div>
+    <div class="col row justify-content-center">
+        <div class="form-check-box">
+            <div class="form-check">
+                {{ form.is_active }}
+                <label class="form-check-label" for="id_is_active">
+                    Активный
+                </label>
+            </div>
+        </div>
+        <div class="form-check-box">
+            <div class="form-check">
+                {{ form.is_new }}
+                <label class="form-check-label" for="id_is_active">
+                    Новый
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

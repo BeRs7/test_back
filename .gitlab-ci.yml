@@ -1,0 +1,129 @@
+variables:
+  PROJ: saturina
+  REGISTRY: registry.digitalocean.com/shtab
+
+stages:
+  - build
+  - deploy
+  - cleanup
+  - jobs
+
+before_script:
+  - mkdir -p ~/.docker/
+  - echo "$REGISTRY_TOKEN" > ~/.docker/config.json
+
+after_script:
+  - echo "" ~/.docker/config.json
+
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# TEMPLATES
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+.build_definition: &build_template
+  stage: build
+  script:
+    - docker build -t $BUILD_NAME .
+
+.deploy_definition: &deploy_template
+  allow_failure: false
+  stage: deploy
+  script:
+    - docker ps -q --filter "name=$BUILD_NAME" | grep -q . && docker rm -f $BUILD_NAME || true
+    - |
+      docker run \
+          --restart=always \
+          --network all \
+          --name=$BUILD_NAME \
+                 --env ENVIRONMENT=$ENV \
+                 --env DATABASE_URL=$DATABASE_URL \
+                 --env SECRET_KEY=$SECRET_KEY \
+          -v $HOME/$MEDIA_VOL_NAME:/app/media/ \
+          -p $PORT:80 \
+          -d $BUILD_NAME
+    - |
+
+
+.cleanup_definition: &cleanup_template
+  stage: cleanup
+  script:
+    - docker system prune --force
+
+
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# BUILD
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+build:dev:
+  variables:
+    ENV: dev
+    BUILD_NAME: saturina_dev
+  <<: *build_template
+  only:
+    - dev
+  tags:
+    - python-server
+
+
+build:master:
+ variables:
+   ENV: master
+   BUILD_NAME: saturina_master
+ <<: *build_template
+ only:
+   - master
+ tags:
+   - sutyrina-prod
+
+
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# DEPLOY
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+deploy:dev:
+  <<: *deploy_template
+  variables:
+    ENV: dev
+    BUILD_NAME: saturina_dev
+    DATABASE_URL: ${DATABASE_URL_DEV}
+    MEDIA_VOL_NAME: saturina_media_dev/media
+    SECRET_KEY: ${SECRET_KEY_DEV}
+    PORT: 8050
+  tags:
+    - python-server
+  only:
+    - dev
+
+
+deploy:master:
+ <<: *deploy_template
+ variables:
+   ENV: master
+   BUILD_NAME: saturina_master
+   DATABASE_URL: ${DATABASE_URL_MASTER}
+   MEDIA_VOL_NAME: saturina_master/media
+   SECRET_KEY: ${SECRET_KEY_MASTER}
+   PORT: 8050
+ only:
+   - master
+ tags:
+   - sutyrina-prod
+
+
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# CLEANUP
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+cleanup:dev:
+  <<: *cleanup_template
+  tags:
+    - python-server
+  only:
+    - dev
+
+
+cleanup:master:
+ <<: *cleanup_template
+ tags:
+   - sutyrina-prod
+ only:
+   - master

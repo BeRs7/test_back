@@ -1,0 +1,40 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Баннеры
+{% endblock %}
+
+{% block content %}
+    <div class="main-content">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Баннеры</h1>
+            <div class="col-12 row no-gutters">
+            </div>
+        </div>
+
+        <table class="table table-list">
+            <thead>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-product-link">
+                    <a href="{% url 'crm:banners:main_banner_list' %}">
+                        Главные баннеры
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-product-link">
+                    <a href="{% url 'crm:banners:second_banner_update' %}">
+                        Второй баннер
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

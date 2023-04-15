@@ -1,0 +1,140 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n parler_tags %}
+{% load i18n %}
+
+{% block title %}Редактирование пользователя{% endblock %}
+{% block content %}
+<div class="main-content">
+    <div class="main-head">
+        <h1 class="h1">{{ user.get_full_name }}</h1>
+        <div class="dropdown dropdown-dots">
+            <button class="btn-dots dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                    data-bs-display="static" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li>
+                    <a href="{% url 'crm:users:delete' user.pk %}" class="dropdown-item">
+                        Удалить
+                        <i class="bi bi-trash-fill icon-light"></i>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <button class="btn btn_big js-submit-user-form">Сохранить изменения</button>
+
+    </div>
+    {% autoescape off %}
+
+    <form class="js-user-form" method="post" enctype="multipart/form-data" data-user-id="{{ user.id }}">
+        {% csrf_token %}
+        <div class="tab-content" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+            <div class="row">
+                <div class="col row row-form">
+                    <div class="form-group col-12">
+                        <label class="col-form-label" for="link">Логин</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="surname">Фамилия</label>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="name">Имя</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="form-group col-12">
+                        <label class="col-form-label" for="link">Телефон</label>
+                        {{ form.phone_number }}
+                    </div>
+                    {% if request.user.is_superuser %}
+                    <div class="form-group col-6">
+                        <button class="btn btn_big" type="button" data-bs-toggle="modal" data-bs-target="#userModal">Сменить пароль</button>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col row justify-content-center">
+                    <div class="form-check-box">
+                        <div class="form-check">
+                            {{ form.is_active }}
+                            <label class="form-check-label" for="id_is_active">
+                                Активный
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            {{ form.is_staff }}
+                            <label class="form-check-label" for="id_is_staff">
+                                Является персоналом
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            {{ form.is_superuser }}
+                            <label class="form-check-label" for="id_is_superuser">
+                                Является администратором
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{#        <div class="tab-content" id="remains" role="tabpanel" aria-labelledby="remains-tab">#}
+{#            <div class="text">Подписки на размер</div>#}
+{#            <table class="table table-remains">#}
+{#                <thead>#}
+{#                <tr class="table-head">#}
+{#                    <th class="table-head" scope="col">#}
+{#                        <span>Превью</span>#}
+{#                    </th>#}
+{#                    <th class="table-head" scope="col">#}
+{#                        <span>Название</span>#}
+{#                    </th>#}
+{#                    <th class="table-head" scope="col">#}
+{#                    </th>#}
+{#                    <th class="table-head" scope="col">#}
+{#                        <span>Размер</span>#}
+{#                    </th>#}
+{#                    <th class="table-head" scope="col">#}
+{#                        <span>Дата подписки</span>#}
+{#                    </th>#}
+{#                    <th class="table-head" scope="col">#}
+{#                        <span></span>#}
+{#                    </th>#}
+{#                    <th class="table-head" scope="col">#}
+{#                    </th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                {% for subscrpt in user.sizesubscriptions.all %}#}
+{#                <tr class="table-item">#}
+{#                    <td>#}
+{#                        <div class="card-img">#}
+{#                            <img src="{{ subscrpt.product.get_cropped_first_image }}" alt="" onerror="this.style.visibility = 'hidden'">#}
+{#                        </div>#}
+{#                    </td>#}
+{#                    <td><a href="{{ subscrpt.product.get_detail_url }}"><input class="table-input" disabled#}
+{#                                                                               type="text"#}
+{#                                                                               value="{{ subscrpt.product.name }}"#}
+{#                                                                               size="10"></a></td>#}
+{#                    <td></td>#}
+{#                    <td><input class="table-input" disabled type="text" value="{{ subscrpt.size }}" size="10">#}
+{#                    </td>#}
+{#                    <td><input class="table-input" disabled type="text" value="{{ subscrpt.created_at|date:'d-m-Y' }}" size="10">#}
+{#                    </td>#}
+{#                    <td><input class="table-input" disabled type="number" value=""#}
+{#                               size="10"></td>#}
+{#                    <td></td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
+{#        </div>#}
+    </form>
+    {% endautoescape %}
+
+</div>
+
+{% endblock %}
+

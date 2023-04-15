@@ -1,0 +1,299 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Товары
+{% endblock %}
+
+{% block content %}
+    <div class="main-content" id="crmProductsList" data-disable-products-url="{{ disable_products_url }}"
+         data-enable-products-url="{{ enable_products_url }}" data-delete-products-url="{{ delete_products_url }}"
+         data-copy-products-url="{{ copy_products_url }}">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Товары</h1>
+            <div class="col-12 row no-gutters">
+                <div class="col-10">
+                    <div class="flex-grow-1 col  search-filters-group">
+                        <form class="form-group filter-search-form {% if has_filter_status or has_filter_size or has_filter_category or has_filter_price %}filt{% endif %}">
+
+                            <input type="text" name="search" value="{{ request.GET.search }}"
+                                   class="form-control  input-search-filters"
+                                   placeholder="Поиск + фильтрация" id="id_search" autocomplete="off">
+                            <div class="search-filters_count-box">
+                                <i class="bi bi-filter"></i>
+                                <span class="search-filters_count" data-count="1">1</span>
+                            </div>
+                            <button class="btn-search" type="submit" aria-label="Поиск">
+                                <i class="bi bi-search"></i>
+                            </button>
+                            <button class="btn-search-reset" type="reset" aria-label="Сбросить фильтры, очистить поле">
+                                <i class="bi bi-x"></i>
+                            </button>
+
+                            <div class="dropdown  dropdown-search-filters">
+                                <div class="dropdown-menu  modal-search-filters" aria-labelledby="id_search-btn">
+                                    <ul class="filters-list">
+                                        <li class="filters-item">
+                                            <div class="form-check  filter-title {% if has_filter_price %}next-form{% endif %}">
+                                                <input class="form-check-input" type="checkbox" value="" id="f-data_orders"
+                                                       {% if has_filter_price %}checked{% endif %}>
+                                                <label class="form-check-label" for="f-data_orders">Цена</label>
+                                            </div>
+                                            <div class="filters-sub-box">
+                                                <div class="sub-box-row  d-flex align-items-center">
+                                                    <div class="form-group">
+                                                        {{ filter.form.price_start }}
+                                                    </div>
+                                                    <span></span>
+                                                    <div class="form-group">
+                                                        {{ filter.form.price_end }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="filters-item">
+                                            <div class="form-check  filter-title">
+                                                <input class="form-check-input" type="checkbox" value="" id="f-size"
+                                                       {% if has_filter_size %}checked{% endif %}>
+                                                <label class="form-check-label" for="f-size">Размер</label>
+                                            </div>
+                                            <div class="filters-sub-box">
+                                                <ul class="filters-sublist">
+                                                    {% for size in filter.form.size %}
+                                                        <li class="filters-subitem">
+                                                            <div class="form-check">
+                                                                {{ size }}
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        <li class="filters-item">
+                                            <div class="form-check  filter-title">
+                                                <input class="form-check-input" type="checkbox" value="" id="f-category"
+                                                       {% if has_filter_category %}checked{% endif %}>
+                                                <label class="form-check-label" for="f-category">Категория</label>
+                                            </div>
+                                            <div class="filters-sub-box">
+                                                <ul class="filters-sublist">
+                                                    {% for category in filter.form.category %}
+                                                        <li class="filters-subitem">
+                                                            <div class="form-check">
+                                                                {{ category }}
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="filters-reset-row">
+                                        <a class="filters-reset" type="reset" href="{% url 'crm:products:products-list' %}">
+                                            Сбросить фильтры
+                                            <i class="bi bi-x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-1" style="margin-left: 25px">
+                    <a class="btn btn_big" href="{% url 'crm:products:product-create' %}">Добавить продукт</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table  table-list  table-list_products">
+            <thead>
+            <tr>
+                <th class="table-head" scope="col">
+                    <div class="form-check">
+                        <input class="form-check-input product-check-all" type="checkbox" value="" id="check">
+                    </div>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Превью</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <a class="btn-sort-price {% if request.GET.o == '-order' %} with-more {% elif request.GET.o == 'order' %} {% else %} none {% endif %}"
+                       href="
+                                {% if request.GET.o == 'order' %}
+                                    ?{% url_replace o='-order' %}
+                                {% else %}
+                                    ?{% url_replace o='order' %}
+                                {% endif %}
+                                ">
+                        Позиция
+                        <div class="btn-sort-arrows">
+                            <i class="bi bi-caret-up-fill btn-sort-arrow"></i>
+                            <i class="bi bi-caret-down-fill btn-sort-arrow"></i>
+                        </div>
+                    </a>
+                </th>
+{#                <th class="table-head head-no-all-check" scope="col">#}
+{#                    <a class="btn-sort-price {% if request.GET.o == '-order_for_all' %} with-more {% elif request.GET.o == 'order_for_all' %} {% else %} none {% endif %}"#}
+{#                       href="#}
+{#                                {% if request.GET.o == 'order_for_all' %}#}
+{#                                    ?{% url_replace o='-order_for_all' %}#}
+{#                                {% else %}#}
+{#                                    ?{% url_replace o='order_for_all' %}#}
+{#                                {% endif %}#}
+{#                                ">#}
+{#                        Посмотреть все#}
+{#                        <div class="btn-sort-arrows">#}
+{#                            <i class="bi bi-caret-up-fill btn-sort-arrow"></i>#}
+{#                            <i class="bi bi-caret-down-fill btn-sort-arrow"></i>#}
+{#                        </div>#}
+{#                    </a>#}
+{#                </th>#}
+
+
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Артикул</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Название</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <a class="btn-sort-price {% if request.GET.o == '-price' %} with-more {% elif request.GET.o == 'price' %} {% else %} none {% endif %}"
+                       href="
+                                {% if request.GET.o == 'price' %}
+                                    ?{% url_replace o='-price' %}
+                                {% else %}
+                                    ?{% url_replace o='price' %}
+                                {% endif %}
+                                ">
+                        Цена
+                        <div class="btn-sort-arrows">
+                            <i class="bi bi-caret-up-fill btn-sort-arrow"></i>
+                            <i class="bi bi-caret-down-fill btn-sort-arrow"></i>
+                        </div>
+                    </a>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Активный</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col"></th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <button type="button" class="btn-products-settings" data-bs-toggle="modal"
+                            data-bs-target="#products-settings">
+                        <i class="bi bi-gear-fill"></i>
+                    </button>
+                </th>
+
+                <th class="table-head head-all-check colspan-first" scope="col">
+                    <div>Выбрано <span class="count-check">969</span> из <span class="count-all">969</span></div>
+                </th>
+                <th class="table-head head-all-check colspan-last" scope="col">
+                    <div class="nav-item-pills dropdown table-dropdown">
+                        <button class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-expanded="false" data-bs-display="static">
+                            Действие
+                            <i class="bi bi-caret-down-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <btn class="dropdown-item dropdown-item_border-bottom" style="cursor: pointer"
+                                     id="disableProducts">Отключить
+                                </btn>
+                            </li>
+                            <li>
+                                <btn class="dropdown-item dropdown-item_border-bottom" style="cursor: pointer"
+                                     id="enableProducts">Включить
+                                </btn>
+                            </li>
+{#                            <li>#}
+{#                                <btn class="dropdown-item dropdown-item_border-bottom" style="cursor: pointer"#}
+{#                                     id="copyProducts">Копировать#}
+{#                                </btn>#}
+{#                            </li>#}
+                            <li>
+                                <btn class="dropdown-item" style="cursor: pointer" id="deleteProducts">Удалить</btn>
+                            </li>
+                        </ul>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <th scope="row" onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <div class="form-check">
+                            <input class="form-check-input product-check" type="checkbox" value="{{ product.id }}"
+                                   id="defaultCheck1">
+                        </div>
+                    </th>
+                    <td class="{% if not product.is_active %} disabled {% endif %}"
+                        onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <div class="card-img">
+                            <img src="{{ product.get_cropped_first_image }}" alt=""
+                                 onerror="this.style.visibility = 'hidden'">
+
+                        </div>
+                    </td>
+
+                    <td class="{% if not product.is_active %} disabled {% endif %}">
+                        <div class="d-flex form-group js-order-crm">
+                            <input type="text" class="form-control product-id-form"
+                                   data-field_form="order"
+                                   data-url="{% url 'crm:api:products:update' product.pk %}" style="width: 65px"
+                                   disabled value="{{ product.order }}">
+                        </div>
+                    </td>
+
+{#                    <td class="{% if not product.is_active %} disabled {% endif %}">#}
+{#                        <div class="d-flex form-group js-order-crm">#}
+{#                            <input type="text" class="form-control product-id-form"#}
+{#                                   data-field_form="order_for_all"#}
+{#                                   data-url="{% url 'crm:api:products:update' product.pk %}" style="width: 65px"#}
+{#                                   disabled value="{{ product.order_for_all }}">#}
+{#                        </div>#}
+{#                    </td>#}
+                    <td class="{% if not product.is_active %} disabled {% endif %}"
+                        onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <span>{{ product.sku }}</span>
+                    </td>
+                    <td class="col-description {% if not product.is_active %} disabled {% endif %}"
+                        onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <p>{{ product.name }}</p>
+                    </td>
+                    <td class="{% if not product.is_active %} disabled {% endif %}"
+                        onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <span>{{ product.price }} ₽</span>
+                    </td>
+                    <td class="{% if not product.is_active %} disabled {% endif %}"
+                        onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <span>{% bool_to_ru product.is_active %}</span>
+                    </td>
+                    <!-- <td class="{% if not product.is_active %}
+                         disabled {% endif %}" onclick="location.href='{% url 'crm:products:product-detail' product.pk %}'">
+                        <span>{% bool_to_ru product.is_stop_sales %}</span>
+                    </td> -->
+                    <td class="col-product-link">
+                        <a href="{{ product.get_detail_url }}" target="_blank">
+                            <i class="bi bi-eye-fill"></i>
+                        </a>
+                    </td>
+                    <td class="col-product-disabled {% if not product.is_active %} disabled {% endif %}">
+                        <a href="
+                                {% if product.is_active %}{% url 'crm:products:product-disable' product.id %} {% else %}
+                        {% url 'crm:products:product-enable' product.id %} {% endif %}"
+                           class="btn-disabled {% if product.is_active %} active {% endif %}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer-list">
+            {% include '_pagination.html' with paginator=page_obj %}
+        </div>
+    </div>
+{% endblock %}

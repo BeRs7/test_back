@@ -1,0 +1,45 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+Редактирование цвета
+{% endblock %}
+
+{% block content %}
+<div class="main-content" id="crmProductsList">
+    <div class="main-head row d-flex justify-content-between">
+        <h1 class="h1 title_margin-bottom">Редактирование цвета</h1>
+        <button type="button" class="btn btn-large js-submit-user-form">Сохранить</button>
+    </div>
+
+    <div class="content">
+        <form class="js-user-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                    {{ form.errors }}
+                    <div class="row">
+                        <div class="row md-col-2.5">
+                            {% include 'includes/admin/_field.html' with field=form.hex only %}
+                        </div>
+                        <div class="row md-col-3" style="margin-top: 40px;">
+                            {% include 'includes/admin/_field.html' with field=form.display_on_main only %}
+                        </div>
+                        <div class="row md-col-3">
+                            {% include 'includes/admin/_field.html' with field=form.image only %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-form md-col-6">
+                            {% include 'includes/admin/_field.html' with field=form.name_ru only %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

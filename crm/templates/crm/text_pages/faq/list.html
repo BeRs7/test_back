@@ -1,0 +1,64 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+    Вопросы FAQ
+{% endblock %}
+
+{% block content %}
+    <div class="main-content" id="crmSecondbanner">
+        <div class="main-head row">
+            <h1 class="h1 title_margin-bottom col-12">Вопросы FAQ</h1>
+            <div class="col-12 row no-gutters">
+                <a href="{% url 'crm:text-pages:questions-create' %}" style="margin-left: auto;" class="btn btn_add">
+                    Создать вопрос-ответ
+                </a>
+            </div>
+        </div>
+
+        <table class="table  table-list  table-list_pages">
+            <thead>
+            <tr>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Позиция</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Вопрос</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span>Активен</span>
+                </th>
+                <th class="table-head head-no-all-check" scope="col">
+                    <span></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for question in questions %}
+                <tr onclick="document.location = '{% url "crm:text-pages:questions-update" question.pk %}'">
+                    <td class="{% if not question.is_active %} disabled {% endif %}">
+                        <span style="margin-left: 10px;">{{ question.order }}</span>
+                    </td>
+                    <td class="{% if not question.is_active %} disabled {% endif %}">
+                        <span>{{ question.question }}</span>
+                    </td>
+                    <td class="{% if not question.is_active %} disabled {% endif %}">
+                        <span>{% bool_to_ru question.is_active %}</span>
+                    </td>
+                    <td class="col-product-disabled {% if not question.is_active %} disabled {% endif %}">
+                        <a href="{% url 'crm:text-pages:questions-toggle-is-active' question.pk %}"
+                           class="btn-disabled {% if question.is_active %} active {% endif %}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="footer-list">
+            {% include '_pagination.html' with paginator=page_obj %}
+        </div>
+    </div>
+{% endblock %}

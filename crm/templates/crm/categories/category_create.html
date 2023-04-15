@@ -1,0 +1,58 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n parler_tags %}
+{% load i18n %}
+
+{% block title %}Создание категории{% endblock %}
+{% block content %}
+
+<div class="main-content">
+    <div class="main-head">
+        <div class="dropdown dropdown-dots">
+        </div>
+        <button class="btn btn_big js-submit-category-form">Создать категорию</button>
+    </div>
+    <div class="content">
+        <form class="js-product-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+                    {{ form.errors }}
+                    <div class="row">
+                        <div class="col-5">
+                            {% include 'crm/categories/_tab_basic.html' %}
+                            <div class="row">
+                                {% include 'includes/admin/_field.html' with field=form.is_active only %}
+                            </div>
+                            <div class="row">
+                                {% include 'includes/admin/_field.html' with field=form.on_main only %}
+                            </div>
+                            <div class="row">
+                                {% include 'includes/admin/_field.html' with field=form.display_in_menu only %}
+                            </div>
+                            <div class="row">
+                                {% include 'includes/admin/_field.html' with field=form.on_transactions only %}
+                            </div>
+                        </div>
+                        <div class="col col-form col-3">
+                            {% include 'includes/admin/_field.html' with field=form.slug only %}
+                            {% include 'includes/admin/_field.html' with field=form.parent only %}
+                            {% include 'includes/admin/_field.html' with field=form.order only %}
+                        </div>
+                        <div class="col col-form col-12" style="margin-top: 25px;">
+
+                        </div>
+                        <div class="col row justify-content-center" style="justify-content: left !important;">
+                            <div class="col-12">
+                                <label class="btn btn_add btn_file" for="id_cover">Добавить обложку</label>
+                                <input type="file" hidden name="cover" class="form-control jsfield-cover" id="id_cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

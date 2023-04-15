@@ -1,0 +1,434 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="x-apple-disable-message-reformatting">
+ <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+ <title>mail / для клиента</title>
+ <link href="https://fonts.googleapis.com/css?family=Lora:400&display=swap&subset=cyrillic" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Lato:400&display=swap&subset=cyrillic" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Raleway:400&display=swap&subset=cyrillic" rel="stylesheet">
+ <!--[if mso]>
+            <style>
+                * {
+                    font-family: sans-serif !important;
+                }
+            </style>
+        <![endif]-->
+ <!--[if !mso]><!-->
+ <!-- <![endif]-->
+ <style>
+  html {
+      margin: 0 !important;
+      padding: 0 !important;
+  }
+
+  * {
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+  }
+
+
+  td {
+      vertical-align: top;
+      mso-table-lspace: 0pt !important;
+      mso-table-rspace: 0pt !important;
+  }
+
+
+  a {
+      text-decoration: none;
+  }
+
+
+  img {
+      -ms-interpolation-mode:bicubic;
+  }
+
+
+
+
+  @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+      u ~ div .email-container {
+          min-width: 320px !important;
+      }
+  }
+
+  @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+      u ~ div .email-container {
+          min-width: 375px !important;
+      }
+  }
+
+  @media only screen and (min-device-width: 414px) {
+      u ~ div .email-container {
+          min-width: 414px !important;
+      }
+  }
+
+ </style>
+ <!--[if gte mso 9]>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+ <style>
+  @media only screen and (max-device-width: 599px), only screen and (max-width: 599px) {
+
+      .eh {
+          height:auto !important;
+      }
+
+      .desktop {
+          display: none !important;
+          height: 0 !important;
+          margin: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          padding: 0 !important;
+          visibility: hidden !important;
+          width: 0 !important;
+      }
+
+      .mobile {
+          display: block !important;
+          width: auto !important;
+          height: auto !important;
+          float: none !important;
+      }
+
+
+          .email-container {
+              width: 100% !important;
+              margin: auto !important;
+          }
+
+
+          .stack-column,
+          .stack-column-center {
+              display: block !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              direction: ltr !important;
+          }
+
+          .stack-column-center {
+              text-align: center !important;
+          }
+
+
+
+
+          .center-on-narrow {
+              text-align: center !important;
+              display: block !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+              float: none !important;
+          }
+          table.center-on-narrow {
+              display: inline-block !important;
+          }
+
+      }
+
+ </style>
+</head>
+
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly;">
+ <div style="background-color:#ffffff;">
+  <!--[if gte mso 9]>
+                                <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+                                <v:fill type="tile" color="#ffffff"/>
+                                </v:background>
+                                <![endif]-->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+   <tr>
+    <td style="background-color:#ffffff;border-collapse:separate !important;" valign="top" align="center">
+     <table bgcolor="#faf8f7" style="margin: 0 auto;" align="center" id="brick_container" cellspacing="0" cellpadding="0" border="0" width="600" class="email-container">
+      <tr>
+       <td>
+        <table cellspacing="0" cellpadding="0" border="0">
+         <tr>
+          <td width="600">
+           <div style="height:28px;line-height:28px;font-size:28px;width:600px">&nbsp;</div>
+           <table cellspacing="0" cellpadding="0" border="0">
+            <tr>
+             <td style="padding-right:198px;padding-left:199px;">
+              <img src="{{ domain }}{% static '6a1cd2e5af5ea4508c19d709a81f1e09c64af8f2.png' %}" width="203" alt="" border="0" style=" max-width:203px; height: auto; display: block;">
+             </td>
+            </tr>
+            <tr>
+             <td style="max-width:448px;text-align:center; padding-right:76px;padding-left:76px;">
+              <div style="height:48px;line-height:48px;font-size:48px;width:448px">&nbsp;</div>
+              <table cellspacing="0" cellpadding="0" border="0">
+               <tr>
+                <td style="text-align:center;" width="448">
+                 <div style="line-height:35px"><span style="color: #191919;line-height:35px;font-family:Lora, Helvetica, Arial, sans-serif; font-size:20px;text-align:center;">Здравствуйте!<br>Ваш заказ №{{ order.id }} принят</span></div>
+                </td>
+               </tr>
+              </table>
+             </td>
+            </tr>
+            <tr>
+             <td style="max-width:448px;text-align:center; padding-right:76px;padding-left:76px;">
+              <div style="height:32px;line-height:32px;font-size:32px;width:448px">&nbsp;</div>
+              <table cellspacing="0" cellpadding="0" border="0">
+               <tr>
+                <td style="text-align:center;" width="448">
+                 <div style="line-height:24px"><span style="color: #191919;line-height:24px;letter-spacing:0.01em;font-family:Lato, Helvetica, Arial, sans-serif; font-size:16px;text-align:center;">Мы уже начали его обработку и в ближайшее время свяжемся с вами для согласования деталей заказа. </span></div>
+                </td>
+               </tr>
+              </table>
+             </td>
+            </tr>
+            <tr>
+             <td style="padding-right:76px;padding-left:76px;">
+              <div style="height:64px;line-height:64px;font-size:64px;width:448px">&nbsp;</div>
+              <table cellspacing="0" cellpadding="0" border="0">
+               <tr>
+                <td width="448" style="   ">
+                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                   <td width="448">
+                    <table cellspacing="0" cellpadding="0" border="0">
+                        {% for product in order.order_products.all %}
+                            <tr>
+                              <td>
+                               <table cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                 <td width="448" style="   ">
+                                  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                   <tr>
+                                    <td width="448">
+                                     <div style="height:24px;line-height:24px;font-size:24px;width:448px">&nbsp;</div>
+                                     <table cellspacing="0" cellpadding="0" border="0">
+                                      <tr>
+                                       <td width="400" style="padding-right:48px;">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                         <tr>
+                                          <td>
+                                           <img src="{{ domain }}{{ product.product.images.first.file.url }}" width="104" alt="" border="0" style=" max-width:104px; height: auto; display: block;">
+                                          </td>
+                                          <td width="264" style="padding-left:32px;">
+                                           <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                             <td style="max-width:240px;text-align:left; padding-right:24px; white-space: nowrap;">
+                                              <div style="line-height:24px"><span style="color: #4a4949;line-height:24px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:16px;text-align:left;">{{ product.product.name }}</span></div>
+                                             </td>
+                                            </tr>
+                                            <tr>
+                                             <td>
+                                              <div style="height:16px;line-height:16px;font-size:16px;width:264px">&nbsp;</div>
+                                              <table cellspacing="0" cellpadding="0" border="0">
+                                               <tr>
+                                                <td width="264" style="   ">
+                                                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                  <tr>
+                                                   <td width="264">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                     <tr>
+                                                      <td class="eh" style="max-width:264px;text-align:left; height:16px; ;">
+                                                       <div style="line-height:20px"><span style="color: #a3a09e;line-height:20px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:15px;text-align:left;">Цвет: {{ product.color.name }}</span></div>
+                                                      </td>
+                                                     </tr>
+                                                     <tr>
+                                                      <td class="eh" style="max-width:264px;text-align:left; height:16px; ;">
+                                                       <div style="height:8px;line-height:8px;font-size:8px;width:264px">&nbsp;</div>
+                                                       <div style="line-height:20px"><span style="color: #a3a09e;line-height:20px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:15px;text-align:left;">Размер: {{ product.size.size }}</span></div>
+                                                      </td>
+                                                     </tr>
+                                                     <tr>
+                                                      <td class="eh" style="max-width:264px;text-align:left; height:16px; ;">
+                                                       <div style="height:8px;line-height:8px;font-size:8px;width:264px">&nbsp;</div>
+                                                       <div style="line-height:20px"><span style="color: #a3a09e;line-height:20px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:15px;text-align:left;">Артикул: {{ product.product.sku }}</span></div>
+                                                      </td>
+                                                     </tr>
+                                                     <tr>
+                                                      <td class="eh" style="max-width:264px;text-align:left; height:16px; ;">
+                                                       <div style="height:8px;line-height:8px;font-size:8px;width:264px">&nbsp;</div>
+                                                       <div style="line-height:20px"><span style="color: #a3a09e;line-height:20px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:15px;text-align:left;">Количество: {{ product.quantity }}</span></div>
+                                                      </td>
+                                                     </tr>
+                                                    </table>
+                                                   </td>
+                                                  </tr>
+                                                 </table>
+                                                </td>
+                                               </tr>
+                                              </table>
+                                             </td>
+                                            </tr>
+                                            <tr>
+                                             <td style="padding-right:124px;">
+                                              <div style="height:16px;line-height:16px;font-size:16px;width:140px">&nbsp;</div>
+                                              <table cellspacing="0" cellpadding="0" border="0">
+                                               <tr>
+                                                <td width="140" style="   ">
+                                                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                  <td width="140">
+                                                   <table cellspacing="0" cellpadding="0" border="0">
+                                                    <tr>
+                                                     <td width="140">
+                                                      <table cellspacing="0" cellpadding="0" border="0">
+                                                       <tr>
+                                                        {% if product.product.price_with_sale %}
+                                                            <td style="max-width:63px;text-align:left; ; white-space: nowrap; vertical-align: middle;">
+                                                             <div style="line-height:24px"><span style="color: #4a4949;line-height:24px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:16px;text-align:left;">{{ product.product.price_with_sale }} ₽</span></div>
+                                                            </td>
+                                                            <td class="eh" style="max-width:61px;text-align:left; height:24px; padding-left:16px; vertical-align: middle;">
+                                                             <div style="line-height:16px"><span style="color: #a3a09e;line-height:16px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:16px;text-decoration: line-through;text-align:left;">{{ product.product.price }} ₽</span></div>
+                                                            </td>
+                                                        {% else %}
+                                                            <td style="max-width:63px;text-align:left; ; white-space: nowrap;">
+                                                             <div style="line-height:24px"><span style="color: #4a4949;line-height:24px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:16px;text-align:left;">{{ product.product.price }} ₽</span></div>
+                                                            </td>
+                                                        {% endif %}
+                                                       </tr>
+                                                      </table>
+                                                     </td>
+                                                    </tr>
+                                                   </table>
+                                                  </td>
+                                                 </table>
+                                                </td>
+                                               </tr>
+                                              </table>
+                                             </td>
+                                            </tr>
+                                           </table>
+                                          </td>
+                                         </tr>
+                                        </table>
+                                       </td>
+                                      </tr>
+                                      <tr>
+                                       <td>
+                                        <div style="height:24px;line-height:24px;font-size:24px;width:448px">&nbsp;</div>
+                                        <img src="{{ domain }}{% static '55tCCMwTX1FHAmv5g4oyiQm42T6VNR.png' %}" width="448" alt="" border="0" style="width:100%; height:auto;margin:auto;display:block;">
+                                       </td>
+                                      </tr>
+                                     </table>
+                                    </td>
+                                   </tr>
+                                  </table>
+                                 </td>
+                                </tr>
+                               </table>
+                              </td>
+                             </tr>
+                        {% endfor %}
+
+                    </table>
+                   </td>
+                  </tr>
+                 </table>
+                </td>
+               </tr>
+              </table>
+             </td>
+            </tr>
+            <tr>
+             <td width="193" style="padding-right:331px;padding-left:76px;">
+              <div style="height:24px;line-height:24px;font-size:24px;width:193px">&nbsp;</div>
+              <table cellspacing="0" cellpadding="0" border="0">
+               <tr>
+                <td style="max-width:129px;text-align:left; ; white-space: nowrap;">
+                 <div style="line-height:24px"><span style="color: #4a4949;line-height:24px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:14px;text-align:left;">{{ order.get_total_count }} товара на сумму:</span></div>
+                </td>
+                <td style="max-width:57px;text-align:left; padding-left:7px; white-space: nowrap;">
+                 <div style="line-height:24px"><span style="color: #4a4949;line-height:24px;letter-spacing:0.01em;font-family:Raleway, Helvetica, Arial, sans-serif; font-size:14px;text-align:left;">{{ order.summary_cost }} ₽</span></div>
+                </td>
+               </tr>
+              </table>
+             </td>
+            </tr>
+            <tr>
+             <td>
+              <div style="height:80px;line-height:80px;font-size:80px;width:600px">&nbsp;</div>
+              <table cellspacing="0" cellpadding="0" border="0">
+               <tr>
+                <td width="600" bgcolor="#f5f2ef" style="   ">
+                 <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <td width="48">
+                   <div style="width:48px">&nbsp;</div>
+                  </td>
+                  <td width="552">
+                   <div style="height:32px;line-height:32px;font-size:32px;width:552px">&nbsp;</div>
+                   <table cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                     <td width="552">
+                      <table cellspacing="0" cellpadding="0" border="0">
+                       <tr>
+                        <td class="eh" style="max-width:212px;text-align:left; height:16px; vertical-align: middle;">
+                         <div style="height:4px;line-height:4px;font-size:4px;width:212px">&nbsp;</div>
+                         <div style="line-height:36px"><span style="color: #ac8771;line-height:36px;font-family:Lora, Helvetica, Arial, sans-serif; font-size:18px;text-align:left;">+7 (991) 922-68-78</span></div>
+                         <div style="height:4px;line-height:4px;font-size:4px;width:212px">&nbsp;</div>
+                        </td>
+                        <td style="padding-left:21px; vertical-align: middle;">
+                            <a href="https://wa.me/79919226878"><img src="{{ domain }}{% static 'pQTsLMRXJ5Qg04cTBlzj4W7eKZPR6j.png' %}" width="16" alt="" border="0" style="; height:auto;margin:auto;display:block;"></a>
+                         <div style="height:4px;line-height:4px;font-size:4px;width:16px">&nbsp;</div>
+                        </td>
+                        <td style="padding-left:7px; vertical-align: middle;">
+                            <a href="https://t.me/sutyrinawedding"><img src="{{ domain }}{% static '591tW1UmrU5v9yvlOf6lV2OyvY2U7v.png' %}" width="16" alt="" border="0" style="; height:auto;margin:auto;display:block;"></a>
+                         <div style="height:4px;line-height:4px;font-size:4px;width:16px">&nbsp;</div>
+                        </td>
+                        <td style="padding-left:91px; vertical-align: middle;">
+                         <table cellspacing="0" cellpadding="0" border="0">
+                          <tr>
+                           <td width="189" style="   ">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                             <td width="176" style="padding-right:48px;">
+                              <table cellspacing="0" cellpadding="0" border="0">
+                               <tr>
+                                <td style="max-width:176px;text-align:right; ; white-space: nowrap;">
+                                 <div style="line-height:24px"><a style="color: #9c795b;line-height:24px;letter-spacing:0.01em;font-family:Lato, Helvetica, Arial, sans-serif; font-size:16px;text-align:right; text-decoration: none;">shop@sutyrinawedding.com</a></div>
+                                </td>
+                               </tr>
+                              </table>
+                             </td>
+                            </table>
+                           </td>
+                          </tr>
+                         </table>
+                        </td>
+                       </tr>
+                      </table>
+                     </td>
+                    </tr>
+                   </table>
+                   <div style="height:32px;line-height:32px;font-size:32px;width:552px">&nbsp;</div>
+                  </td>
+                 </table>
+                </td>
+               </tr>
+              </table>
+             </td>
+            </tr>
+           </table>
+          </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+      <!--[if !mso]><!-->
+      <tr>
+       <td class="mobile" align="center" style="display: none; width: 0; height: 0;">
+        <table cellspacing="0" cellpadding="0" border="0"></table>
+       </td>
+      </tr><!-- <![endif]-->
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+</body>
+
+</html>

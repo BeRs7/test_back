@@ -1,0 +1,323 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-01 12:05+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cart/serializers/cart.py:76
+msgid "Неверное количество товара"
+msgstr "Invalid quantity of product"
+
+#: catalog/models/product.py:23
+msgid "Название"
+msgstr "Name"
+
+#: config/settings.py:128
+msgid "Russian"
+msgstr ""
+
+#: config/settings.py:128
+msgid "English"
+msgstr ""
+
+#: orders/choices/order.py:32
+msgid "Новый"
+msgstr "New"
+
+#: orders/choices/order.py:33
+msgid "Передан в доставку"
+msgstr "Transferred for delivery"
+
+#: orders/choices/order.py:34
+msgid "Доставлен клиенту"
+msgstr "Delivered to the client"
+
+#: orders/choices/order.py:35
+msgid "Отменен"
+msgstr "Canceled"
+
+#: orders/choices/order.py:36
+msgid "Выполнен"
+msgstr "Ready"
+
+#: orders/choices/order.py:37 orders/choices/order.py:63
+msgid "Возврат"
+msgstr "Return"
+
+#: orders/choices/order.py:38
+msgid "Комплектуется"
+msgstr "Completing"
+
+#: orders/choices/order.py:39
+msgid "Предоплата поступила"
+msgstr "Prepayed"
+
+#: orders/choices/order.py:40
+msgid "Доставка не оплачана"
+msgstr "Delivery not payed"
+
+#: orders/choices/order.py:41
+msgid "Обмен"
+msgstr "Change"
+
+#: orders/choices/order.py:42
+msgid "Укомплектован"
+msgstr "Complected"
+
+#: orders/choices/order.py:43
+msgid "Доставляется"
+msgstr "Shipping"
+
+#: orders/choices/order.py:44
+msgid "Доставка перенесена"
+msgstr "Delivery changed time"
+
+#: orders/choices/order.py:45
+msgid "Вовзврат отправления"
+msgstr "Returning order"
+
+#: orders/choices/order.py:46
+msgid "Недозвон"
+msgstr "Can't call"
+
+#: orders/choices/order.py:47
+msgid "Нет в наличии"
+msgstr "Not in stock"
+
+#: orders/choices/order.py:48
+msgid "Не устроила доставка"
+msgstr "Delivery not fit"
+
+#: orders/choices/order.py:49
+msgid "Остались вопросы"
+msgstr "Some questions"
+
+#: orders/choices/order.py:60
+msgid "Не оплачено"
+msgstr "Don't payed"
+
+#: orders/choices/order.py:61
+msgid "100% оплата"
+msgstr ""
+
+#: orders/choices/order.py:62
+msgid "Ошибка"
+msgstr "Failed"
+
+#: orders/choices/order.py:71
+msgid "Онлайн"
+msgstr ""
+
+#: orders/choices/order.py:71
+msgid "Наличные при получении"
+msgstr "Cash on take"
+
+#: orders/choices/order.py:79
+msgid "Другое"
+msgstr "Other"
+
+#: orders/choices/order.py:80
+msgid "Самовывоз"
+msgstr "Pickup"
+
+#: orders/serializers/orders.py:48
+msgid "Максимальное количество продукта: {}"
+msgstr "Max quantity of product is {}"
+
+#: orders/serializers/orders.py:55
+msgid "Продукт снят с продажи"
+msgstr "Selected product is out of stock"
+
+#: orders/serializers/orders.py:62
+msgid "Продукт некорректно заполнен"
+msgstr "Selected product info filled incorrect"
+
+#: orders/tasks/emails.py:28
+msgid "Заказ #{} успешно оформлен"
+msgstr "Order #{} successfully placed "
+
+#: orders/tasks/emails.py:43
+msgid "Заказ #{} отменён"
+msgstr "Order #{} canceled"
+
+#: orders/templates/order_canceled.html:14 orders/templates/order_payed.html:14
+msgid "Получатель: "
+msgstr ""
+
+#: orders/templates/order_canceled.html:15 orders/templates/order_payed.html:15
+msgid "Телефон получателя: "
+msgstr ""
+
+#: orders/templates/order_canceled.html:16 orders/templates/order_payed.html:16
+#, fuzzy
+#| msgid "Не устроила доставка"
+msgid "Способ доставки: "
+msgstr "Delivery not fit"
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "Адрес: "
+msgstr ""
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "г."
+msgstr ""
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "индекс:"
+msgstr ""
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "ул."
+msgstr ""
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "д."
+msgstr ""
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "строение"
+msgstr ""
+
+#: orders/templates/order_canceled.html:17 orders/templates/order_payed.html:17
+msgid "кв."
+msgstr ""
+
+#: orders/templates/order_canceled.html:18 orders/templates/order_payed.html:18
+msgid "Статус оплаты: "
+msgstr ""
+
+#: subscriptions/serializers.py:20
+msgid "Подтвердите подписку"
+msgstr "Confirm subscription"
+
+#: users/forms.py:48
+msgid "Ваш пароль устарел, необходимо восстановить пароль."
+msgstr "Your password has expired, you need to recover your password"
+
+#: users/forms.py:80
+msgid "Эл. почта"
+msgstr "Email"
+
+#: users/forms.py:85
+msgid "Имя"
+msgstr "Name"
+
+#: users/forms.py:90
+msgid "Пароль"
+msgstr "Password"
+
+#: users/forms.py:95
+msgid "Подтверждение пароля"
+msgstr "Password confirmation"
+
+#: users/forms.py:101
+msgid "Пользователь с таким емейлом уже существует"
+msgstr "User with this email already exists"
+
+#: users/forms.py:103
+msgid "Укажите имя"
+msgstr "Please enter a name"
+
+#: users/permissions.py:20
+msgid "Требуется авторизация"
+msgstr "Authorization required"
+
+#: utils/serializers/fields.py:10
+msgid "Неправильный формат номера телефона."
+msgstr "Invalid phone number format."
+
+#~ msgid "Оплачено"
+#~ msgstr "Payed"
+
+#~ msgid "Картой"
+#~ msgstr "Bank Card"
+
+#~ msgid "Почта России"
+#~ msgstr "Russian Post"
+
+#~ msgid "Неизвестно"
+#~ msgstr "Unknown"
+
+#~ msgid "Курьерская доставка по России (Boxberry)"
+#~ msgstr "Boxberry courier"
+
+#~ msgid "Самовывоз с пункта выдачи Boxberry"
+#~ msgstr "Boxberry pickup point"
+
+#~ msgid "Доставка по миру (EMS)"
+#~ msgstr "Worldwide Shipping (EMS)"
+
+#~ msgid "Доставка с примеркой по России (IML)"
+#~ msgstr "Delivery with fitting in Russia (IML)"
+
+#~ msgid "Ваша корзина пуста"
+#~ msgstr "Cart is empty"
+
+#~ msgid "Время начала действия промокода ещё не наступило"
+#~ msgstr "Promo code working start time has not arrived"
+
+#~ msgid "Время действия промокода истекло"
+#~ msgstr "Promo code expired"
+
+#~ msgid "Максимальное количество заказов с этим промокодом достигнуто"
+#~ msgstr "The maximum number of orders with this promo code has been reached"
+
+#~ msgid "Выбранный размер снят с продажи"
+#~ msgstr "Selected size is out of stock"
+
+#~ msgid "Выбранный размер закончился"
+#~ msgstr "Selected size is out of stock"
+
+#~ msgid "Минимальная сумма стоимости товаров для применения промокода {} руб."
+#~ msgstr ""
+#~ "The minimum amount of the cost of goods for using the promo code is {} rub"
+
+#~ msgid "Оплата заказа %23{} на сайте sutyrina.stik.pro"
+#~ msgstr "Payment for the order %23{} on the website www.lechikrasivo.ru"
+
+#~ msgid "Произошла ошибка, попробуйте позже или обратитесь в поддержку."
+#~ msgstr "An error occurred, please try later or contact support."
+
+#~ msgid "Данный email уже используется"
+#~ msgstr "This email is already in use"
+
+#~ msgid "Параметры uid и token обязательны"
+#~ msgstr "The uid and token parameters are required."
+
+#~ msgid "Данный e-mail не зарегистрирован"
+#~ msgstr "This e-mail is not registered"
+
+#~ msgid "Данный аккаунт ещё не активирован"
+#~ msgstr "This account has not been activated yet"
+
+#~ msgid "Не валидный токен"
+#~ msgstr "Invalid token"
+
+#~ msgid "Восстановление пароля"
+#~ msgstr "Password restore"
+
+#~ msgid "Неверный код подтверждения"
+#~ msgstr "Invalid code"
+
+#~ msgid "Неверный токен"
+#~ msgstr "Invalid token"
+
+#~ msgid "Пароли не совпадают"
+#~ msgstr "Password mismatch"
+
+#~ msgid "E-mail с восстановлением отправлен"
+#~ msgstr "Recovery email sent"

@@ -1,0 +1,73 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load bool_to_ru %}
+{% load url_replace %}
+{% load thumbnail %}
+
+{% block title %}
+Поиск
+{% endblock %}
+
+{% block content %}
+<div class="main-content" id="crmGlobalSearch" data-global-search-url="{% url 'crm:api:global-search' %}">
+    <div class="main-head row">
+        <h1 class="h1 title_margin-bottom col-12">Поиск</h1>
+    </div>
+
+    <table class="table table-list">
+        <thead>
+        <tr>
+            <th class="table-head" scope="col">
+                <div class="form-check">
+                    <input class="form-check-input product-check-all" type="checkbox" value=""  id="check">
+                </div>
+            </th>
+            <th class="table-head head-no-all-check" scope="col">
+                <span>Id</span>
+            </th>
+            <th class="table-head head-no-all-check" scope="col">
+                <span>Тип обьекта</span>
+            </th>
+            <th class="table-head head-no-all-check" scope="col">
+                <span>Ссылка</span>
+            </th>
+
+            <th class="table-head head-all-check colspan-first" scope="col">
+                <div>Выбрано <span class="count-check">969</span> из <span class="count-all">969</span></div>
+            </th>
+            <th class="table-head head-all-check colspan-last" scope="col">
+            </th>
+        </tr>
+        </thead>
+        <div v-if="is_loading">
+            Загрузка...
+        </div>
+        <div v-else-if="!is_loading && products.length === 0">
+            Нету результатов
+        </div>
+        <tbody>
+        <tr v-for="product in products" v-if="products.length > 0 && !is_loading">
+            <th scope="row">
+                <div class="form-check">
+                    <input class="form-check-input product-check" type="checkbox" :value="[[ product.id ]]"
+                           id="defaultCheck1">
+                </div>
+            </th>
+            <td>
+                <span><a :href="[[ product.detail_url ]]">[[ product.id ]]</a></span>
+            </td>
+            <td>
+                <span>[[ product.type ]]</span>
+            </td>
+            <td>
+                <span> <a :href="[[ product.detail_url ]]">[[ product.name ]]</a></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="footer-list">
+        {% include '_pagination.html' with paginator=page_obj %}
+    </div>
+</div>
+{% endblock %}

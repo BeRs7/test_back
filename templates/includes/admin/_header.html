@@ -1,0 +1,27 @@
+<header class="navbar navbar-expand-lg">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Главная</li>
+    </ol>
+    <!-- form-search -->
+    <div class="mr-3">
+        <a href="{% url 'clearcache_admin' %}" class="btn btn-primary">Очистить кэш</a>
+    </div>
+
+    <div class="dropdown dropdown-head">
+        <button class="dropdown-head dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+            <div class="dropdown-head-photo">
+                <img src="" alt="">
+            </div>
+            <span class="dropdown-head-name user-name">{{ request.user.get_full_name }}</span>
+            <i class="bi bi-caret-down-fill"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li>
+                <a href="{% url 'crm:users:logout' %}" class="dropdown-item">
+                    Выйти
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>

@@ -1,0 +1,29 @@
+{% load thumbnail %}
+<div class="row">
+    <div class="col-6">
+        <div class="row">
+            <div class="col col-form col-connections">
+                <div class="form-group">
+                    <label class="col-form-label" for="add-items_complete">Может понравиться</label>
+                    {{ form.suggested_products }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-form col-connections">
+                <div class="form-group">
+                    <label class="col-form-label" for="add-items_complete">Дополнить образ</label>
+                    {{ form.total_look }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-form col-connections">
+                <div class="form-group">
+                    <label class="col-form-label" for="add-items_complete">Цвета</label>
+                    {{ form.colors }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

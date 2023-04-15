@@ -1,0 +1,10 @@
+{% load parler_tags %}
+
+<div class="row">
+    <div class="col col-form col-9">
+        {% include 'includes/admin/_field.html' with field=form.name_ru only %}
+        {% include 'includes/admin/_field.html' with field=form.description_ru only %}
+        {% include 'includes/admin/_field.html' with field=form.composition_and_care_ru only %}
+        {% include 'includes/admin/_field.html' with field=form.model_measurements_ru only %}
+    </div>
+</div>

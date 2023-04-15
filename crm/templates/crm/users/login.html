@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Авторизация | SUTYRINA ADMIN</title>
+    <link href="{% static 'internal_admin/css/vendor/select2.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'internal_admin/css/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'internal_admin/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'internal_admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'internal_admin/css/login.css' %}">
+</head>
+<body>
+    <div class="container login-form-wrapper vh-100">
+        <div class="login-form">
+            <form method="post" novalidate>
+                <div class="form-title">Войдите в аккаунт</div>
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                <div class="errors mt-3 mb-3 text-danger">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+                <div class="mt-4">
+                    {% include 'includes/admin/_field.html' with field=form.username only %}
+                </div>
+                <div class="mt-4">
+                    {% include 'includes/admin/_field.html' with field=form.password only %}
+                </div>
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-full">Войти</button>
+                </div>
+                <div class="mt-5 text-center">
+                    <a href="#" class="restore-link">Забыли пароль?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'internal_admin/js/vendor/jquery.min.js' %}"></script>
+    <script src="{% static 'internal_admin/js/vendor/select2.min.js' %}"></script>
+    <script src="{% static 'internal_admin/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'internal_admin/js/my_select.js' %}"></script>
+    <script src="{% static 'internal_admin/js/script.js' %}"></script>
+</body>
+</html>

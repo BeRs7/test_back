@@ -1,0 +1,186 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load i18n parler_tags %}
+{% load i18n %}
+
+{% block title %}Редактирование заказа{% endblock %}
+{% block content %}
+<div class="main-content">
+    <div class="main-head">
+        <h1 class="h1">Заказ {{ order.id }} от {{ order.created_at|date:"j.m.Y" }}</h1>
+        <div class="dropdown dropdown-dots">
+{#            <button class="btn-dots dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"#}
+{#                    data-bs-display="static" aria-expanded="false">#}
+{#                <i class="bi bi-three-dots-vertical"></i>#}
+{#            </button>#}
+{#            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="width: 220px;">#}
+{#                <li>#}
+{#                    <a href="{% url 'crm:orders:detail' order.pk %}" target="_blank"#}
+{#                       class="dropdown-item dropdown-item_border-bottom">#}
+{#                        Посмотреть#}
+{#                        <i class="bi bi-eye-fill icon-light"></i>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <!--<li>#}
+{#                    <a href="" class="dropdown-item">#}
+{#                        Удалить#}
+{#                        <i class="bi bi-trash-fill icon-light"></i>#}
+{#                    </a>#}
+{#                </li>-->#}
+{#                {% if order.country_iso and order.country_iso != "не указан" %}#}
+{#                <li>#}
+{#                    <a href="{% url "crm:orders:send-to-retail" order.pk %}" class="dropdown-item" id="order-detail-send-retail">#}
+{#                        Отправить в RetailCRM#}
+{#                        <i class="bi bi-envelope"></i>#}
+{#                    </a>#}
+{#                </li>#}
+{#                {% endif %}#}
+{#            </ul>#}
+        </div>
+    </div>
+
+
+    <form action="">
+        <div class="tab-content" id="properties" role="tabpanel" aria-labelledby="properties-tab">
+            <div class="row">
+                <div class="col row row-form">
+                    <div class="form-group col-12">
+                        <label class="col-form-label" for="link">Email</label>
+                        <input type="text" disabled class="form-control" value="{{ order.email }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="surname">Фамилия</label>
+                        <input type="text" disabled class="form-control" value="{{ order.last_name }}">
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="name">Имя</label>
+                        <input type="text" disabled class="form-control" value="{{ order.first_name }}">
+
+                    </div>
+                    <div class="form-group col-12">
+                        <label class="col-form-label" for="link">Телефон</label>
+                        <input type="text" disabled class="form-control" value="{{ order.phone }}">
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="name">Промокод</label>
+                        <input type="text" disabled class="form-control" value="{{ order.promocode|default:" -" }}">
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="name">Вес</label>
+                        <input type="number" disabled class="form-control" value="{{ order.get_total_weight }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Страна</label>
+                        <input type="text" disabled class="form-control" value="{{ order.country }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Город</label>
+                        <input type="text" disabled class="form-control" value="{{ order.city }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Индекс</label>
+                        <input type="text" disabled class="form-control" value="{{ order.zip_code }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Код ПВЗ</label>
+                        <input type="text" disabled class="form-control" value="{{ order.pvz_code }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Улица</label>
+                        <input type="text" disabled class="form-control" value="{{ order.street }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Дом</label>
+                        <input type="text" disabled class="form-control" value="{{ order.house }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Корпус</label>
+                        <input type="text" disabled class="form-control" value="{{ order.house_building }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="link">Квартира</label>
+                        <input type="text" disabled class="form-control" value="{{ order.apartment }}">
+                    </div>
+                    <div class="form-group col-12">
+                        <label class="col-form-label" for="link">Комментарий</label>
+                        <input type="text" disabled class="form-control" value="{{ order.comment|default:" -" }}">
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="price">Стоимость покупок</label>
+                        <input type="text" disabled class="form-control" value="{{ order.cost }} RUB">
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="old-price">Стоимость доставки</label>
+                        <input type="text" disabled class="form-control" value="{{ order.delivery_cost }} RUB">
+
+                    </div>
+                    <div class="form-group col-6">
+                        <label class="col-form-label" for="sort">Оплата</label>
+                        <input type="text" disabled class="form-control" value="{{ order.summary_cost }} RUB">
+                    </div>
+                </div>
+                <div class="col row justify-content-center">
+                    <div class="form-check-box">
+                       <th class="table-head" scope="col">
+                        <span>{{ order.get_status_display }}</span>
+                    </th>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="remains" role="tabpanel" aria-labelledby="remains-tab">
+            <div class="text">Список покупок</div>
+            <table class="table table-remains">
+                <thead>
+                <tr class="table-head">
+                    <th class="table-head" scope="col">
+                        <span>Превью</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                        <span>Название</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                        <span>Размер</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                        <span>Цена</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                        <span>Количестов</span>
+                    </th>
+                    <th class="table-head" scope="col">
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product_in_order in order.order_products.all %}
+                <tr class="table-item">
+                    <td>
+                        <div class="card-img">
+                            <img src="{{ product_in_order.product.get_cropped_first_image }}" alt="" onerror="this.style.visibility = 'hidden'">
+                        </div>
+                    </td>
+                    <td><a href="{% url 'crm:products:product-detail' product_in_order.pk %}"><input class="table-input" disabled
+                                                                                       type="text"
+                                                                                       value="{{ product_in_order.product.name }}"
+                                                                                       size="10"></a></td>
+                    <td><input class="table-input" disabled type="text" value="{{ product_in_order.size }}" size="10">
+                    </td>
+                    <td><input class="table-input" disabled type="text" value="{{ product_in_order.cost }} ₽" size="10">
+                    </td>
+                    <td><input class="table-input" disabled type="number" value="{{ product_in_order.quantity }}"
+                               size="10"></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
