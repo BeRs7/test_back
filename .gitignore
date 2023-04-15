@@ -6,7 +6,6 @@ __pycache__/
 *.pid
 *$py.class
 .idea
-media
 .DS_Store
 dump.rdb
 venv
